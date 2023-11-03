@@ -1,0 +1,40 @@
+@startuml
+
+Class equipoVolleyball {
+    -nombre
+    -registro
+}
+
+Class Jugador {
+    -numero
+    -posicion
+}
+
+Class Capitan
+
+Class Juego {
+    -localidad
+    -puntuacion
+}
+
+Class Entrenador {
+    -nivelAcreditacion
+    -añosExperiencia
+}
+
+Class Persona {
+    -telefono
+    -nombre
+    -direccion
+}
+
+equipoVolleyball *-- "6..20" Jugador
+equipoVolleyball *-- Capitan
+equipoVolleyball o-- Entrenador
+
+Juego -left- "2" equipoVolleyball:participa
+Jugador-right-|>Persona
+Entrenador--|>Persona
+Capitan --|> Jugador
+
+@enduml

@@ -1,0 +1,77 @@
+@startuml Panamericanos
+
+object ":Juego" as Juego {
+    localidad = Chile
+    Puntuacion = 10-0
+}
+
+object ":Equipo" as EquipoV {
+    nombre = Venezuela
+    registro = 1
+}
+
+object ":Capitan" as CapitanV{
+    telefono = +58 412 100 8526
+    nombre = Jesus 
+    direccion = Caracas
+    numero = 12
+    posicion = Rematador
+}
+
+object ":Jugador" as JugadorV{
+    telefono = +58 412 100 8526
+    nombre = Felipe
+    direccion = Maracay
+    numero = 10
+    posicion = Bloqueador
+}
+
+object ":Entrenador" as EntrenadorV{
+    telefono = +58 412 100 8526
+    nombre = Luis
+    direccion = La Pastora
+    años_experiencia = 10
+    nivel_acreditacion = Profesional
+}
+
+
+
+object ":Equipo" as EquipoC{
+    nombre = Colombia
+    registro = 2
+}
+
+object ":Capitan" as CapitanC {
+    telefono = +57 412 100 8526
+    nombre = Pedro
+    direccion = Bogota
+    numero = 32
+    posicion = Libero
+}
+
+object ":Jugador" as JugadorC{
+    telefono = +57 412 100 852
+    nombre = Carlos
+    direccion = Medellin
+    numero = 4
+    posicion = Armador
+}
+
+object ":Entrenador" as EntrenadorC{
+    telefono = +57 412 100 852
+    nombre = Pablo
+    direccion = Medellin
+    años_experiencia = 4
+    nivel_acreditacion = Profesional
+}
+
+JugadorV -right-* EquipoV
+CapitanV -left-* EquipoV
+EntrenadorV --o EquipoV
+
+JugadorC -right-* EquipoC
+CapitanC -left-* EquipoC
+EntrenadorC --o EquipoC
+
+(EquipoC,EquipoV) -left- Juego: participa
+@enduml
