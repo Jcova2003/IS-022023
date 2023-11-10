@@ -1,0 +1,25 @@
+@startuml
+state Urgente <<choice>>
+state Envio <<join>>
+
+[*] --> PedidoColocado :Encargar Producto
+PedidoColocado --> PedidoValidado: validar pedido
+PedidoValidado --> PedidoPagadoporAdelantado: Pagar
+PedidoPagadoporAdelantado --> PedidoPagadoporAdelantado: Cobrar Pago
+
+PedidoPagadoporAdelantado--> Urgente <<choice>>:Obtener Producto
+Urgente --> EnvioUrgente: Urgente
+Urgente --> EnvioOrdinario: No urgente
+
+EnvioUrgente-->Envio
+EnvioOrdinario-->Envio
+Envio--> PedidoRealizado
+
+PedidoRealizado-->PedidoRealizado: Dar cervezas a los transportistas
+PedidoRealizado-->PedidoRealizado: Añadir cliente a la lista de clientes satisfechos
+
+PedidoRealizado--> [*]:Enviar Recibo
+
+
+
+@enduml

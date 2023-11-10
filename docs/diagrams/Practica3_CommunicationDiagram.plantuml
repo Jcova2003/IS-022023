@@ -1,0 +1,39 @@
+@startuml 
+skinparam noteBackgroundColor transparent
+skinparam noteBorderColor transparent
+hide members
+
+object ":Actor" as Actor
+object ":Registro" as Registro
+object ":CatalogoProducto" as Catalogo
+object ":Venta" as Venta
+object ":LineaVenta" as LineaVenta
+object ":List" as List
+
+
+Actor -d--> Registro
+note on link
+    1. introducirArticulo(ArticuloID id, int cant)
+end note
+
+Registro -right--> Catalogo
+note on link
+    2:getEspecificacion(id)
+end note
+
+Registro ---> Venta
+note on link
+    3:crearLineaVenta(espec, cant)
+end note
+
+Venta ---> List   
+note on link
+    4.lineasVenta.añadir(new LineaVenta(espec, cant))
+end note
+
+Venta -right--> LineaVenta
+note on link
+    5.new ArrayList()
+end note
+
+@enduml
