@@ -1,6 +1,6 @@
-@startuml
+@startuml Volley
 
-Class equipoVolleyball {
+Class taller {
     -nombre
     -registro
 }

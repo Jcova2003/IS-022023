@@ -1,0 +1,71 @@
+@startuml Ejercicio
+Skinparam Style Strictuml
+Class "Taller" as Taller
+
+Class "Personal" as Personal{
+- Nombre
+- Apellido
+- Id
+- Cargo
+}
+
+Class "Mecanico" as Mecanico 
+
+Class "Gerente" as Gerente 
+
+Class "Jefe" as Jefe
+
+Class PersonalReceptor
+
+Class "Reporte" as Reporte {
+    - problemas_detectados
+    - datos_facturacion
+
+}
+
+Class "Vehiculo" as Vehiculo{
+    -modelo
+    -placa
+    -n_serie
+    -n_puestos
+    -danos_evidentes
+
+}
+
+Class "Cliente" as Cliente {
+}
+
+Class "Bono" as Bono {
+    - horas_trabajadas
+    - cantidad
+}
+
+Class "Reparaciones" as Reparaciones  {
+    -repuestos_usados
+    -fecha_inicio
+    -fecha_fin
+}
+
+Class Factura
+
+
+
+Taller *-d- Personal
+Taller o-d-> "1..."Vehiculo  
+Gerente -u-|> Personal
+Mecanico -u-|> Personal
+Jefe -u-|> Personal
+PersonalReceptor -u-|> Personal
+PersonalReceptor --> Reporte : elabora
+Gerente --> Factura : elabora
+Mecanico --> Reparaciones : realiza
+Reparaciones --* Reporte
+Vehiculo--|> Reporte
+Jefe --> Bono: calcula
+Bono --> Reparaciones : basado en
+Mecanico --> Bono : recibe
+Cliente --> Factura: paga
+Gerente --> Cliente: cobra factura
+Cliente --> Vehiculo: tiene
+
+@enduml
